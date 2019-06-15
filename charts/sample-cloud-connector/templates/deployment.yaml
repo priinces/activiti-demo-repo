@@ -21,14 +21,10 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
-{{- if include "common.registry-pull-secrets" . }}
-      imagePullSecrets:
-      {{- include "common.registry-pull-secrets" . | indent 6 }}
-{{- end }}
       containers:
       - name: {{ .Chart.Name }}
-        image: {{ include "common.container-image" . | quote }}
-        imagePullPolicy: {{ include "common.container-image-pull-policy" . }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
         env:
         - name: JAVA_OPTS
           value: "-Xmx{{ .Values.javaOpts.xmx }} -Xms{{ .Values.javaOpts.xms }} {{ .Values.javaOpts.other}}"
@@ -48,18 +44,12 @@ spec:
           value: {{ .Values.global.rabbitmq.username.value }}
         - name: SPRING_RABBITMQ_PASSWORD
           value: {{ .Values.global.rabbitmq.password.value }}
-        {{- if include "common.keycloak-url" $ }}
         - name: ACT_KEYCLOAK_URL
-          value: {{ include "common.keycloak-url" $ | quote }}
-        {{- end }}
-        {{- if include "common.keycloak-realm" . }}
+          value: {{ .Values.global.keycloak.url | quote }}
         - name: ACT_KEYCLOAK_REALM
-          value: {{ include "common.keycloak-realm" . | quote }}
-        {{- end }}
-        {{- if include "common.keycloak-resource" . }}
+          value: {{ .Values.global.keycloak.realm | quote }}
         - name: ACT_KEYCLOAK_RESOURCE
-          value: {{ include "common.keycloak-resource" . | quote }}
-        {{- end }}
+          value: {{ .Values.global.keycloak.resource | quote }}
         - name: EUREKA_CLIENT_ENABLED
           value: "false"
         - name: ACTIVITI_CLOUD_SERVICES_METADATA_EUREKA_STATIC_ENABLED
@@ -68,7 +58,6 @@ spec:
           value: "false"
         - name: ACT_CLOUD_CONFIG_SERVER_ENABLED
           value: "false"
-{{ include "common.extra-env" . | indent 8 }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
