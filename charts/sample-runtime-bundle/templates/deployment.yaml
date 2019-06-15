@@ -44,7 +44,13 @@ spec:
           value: {{ .Values.global.rabbitmq.username.value }}
         - name: SPRING_RABBITMQ_PASSWORD
           value: {{ .Values.global.rabbitmq.password.value }}
-          {{- if .Values.db.uri }}
+        - name: ACT_KEYCLOAK_URL
+          value: "http://activiti-cloud-gateway.activiti7.192.168.222.116.nip.io/auth"
+        - name: ACT_KEYCLOAK_REALM
+          value: "activiti"
+        - name: ACT_KEYCLOAK_RESOURCE
+          value: "activiti"
+         {{- if .Values.db.uri }}
         - name: SPRING_DATASOURCE_URL
           value: {{ .Values.db.uri | quote }} 
           {{- end }}
