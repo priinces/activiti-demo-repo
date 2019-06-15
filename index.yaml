@@ -2,12 +2,12 @@ apiVersion: v1
 entries:
   sample-runtime-bundle:
   - apiVersion: v1
-    created: "2019-06-14T16:32:17.109417+09:00"
+    created: "2019-06-15T11:11:34.458213+09:00"
     description: A Helm chart for Kubernetes
-    digest: 33385939c7efa8a04b0a34ddd9e185c8773205c2878189df5bfeecf67642f304
+    digest: ccf4b35f5c8a765448499fae90cdc55ae1055e81042618319f0aed5f1ae5e2f7
     icon: https://salaboy.files.wordpress.com/2018/01/acitiviti_icon_fullcolor_github_400x400.png
     name: sample-runtime-bundle
     urls:
     - https://priinces.github.io/activiti-demo-repo/sample-runtime-bundle-0.1.0.tgz
     version: 0.1.0
-generated: "2019-06-14T16:32:17.107359+09:00"
+generated: "2019-06-15T11:11:34.456592+09:00"
