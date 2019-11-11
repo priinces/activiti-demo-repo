@@ -1,8 +1,18 @@
 apiVersion: v1
 entries:
+  demo-workflow-connector:
+  - apiVersion: v1
+    created: "2019-11-12T01:22:48.299431+09:00"
+    description: A Helm chart for Kubernetes
+    digest: 7df1642b496c606ce924e1c5b2519d3f9aee461349445d0136a722dee69c09ef
+    icon: https://raw.githubusercontent.com/jenkins-x/jenkins-x-platform/master/images/java.png
+    name: demo-workflow-connector
+    urls:
+    - https://priinces.github.io/activiti-demo-repo/demo-workflow-connector-0.0.1.tgz
+    version: 0.0.1
   demo-workflow-rb:
   - apiVersion: v1
-    created: "2019-11-11T19:33:02.32626+09:00"
+    created: "2019-11-12T01:22:48.301705+09:00"
     description: A Helm chart for Activiti Cloud Runtime Bundle Demo Example
     digest: 844e2525b1692f4b6dfdf8b695858978d3cb70ac0463aea1fa9bd682dfe28df9
     icon: https://salaboy.files.wordpress.com/2018/01/acitiviti_icon_fullcolor_github_400x400.png
@@ -10,4 +20,4 @@ entries:
     urls:
     - https://priinces.github.io/activiti-demo-repo/demo-workflow-rb-0.0.1.tgz
     version: 0.0.1
-generated: "2019-11-11T19:33:02.324626+09:00"
+generated: "2019-11-12T01:22:48.297533+09:00"
