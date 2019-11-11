@@ -64,7 +64,7 @@ javaOpts:
 image:
   repository: dorothy/demo-workflow-rb
   tag: latest
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 service:
   type: ClusterIP
   externalPort: 80
