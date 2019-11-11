@@ -33,16 +33,16 @@ db:
   ddlAuto:
 
 postgres:
-  enabled: false
+  enabled: true
   name: postgres
   port: 5432
   username: postgres
   password:
 
 init:
-  image:
-    repository: alpine
-    tag: 3.8
+  container:
+    image: alpine:3.8
+    imagePullPolicy: IfNotPresent
 
 ## Allows the specification of additional environment variables
 extraEnv: |
@@ -62,13 +62,14 @@ javaOpts:
 # only set this variable if a private registry secret is needed to pull the image
 #registryPullSecrets: private-registry-secret
 image:
-  repository: activiti-runtime-bundle-custom
-  tag: 0.0.1-SNAPSHOT
+  repository: dorothy/demo-workflow-rb
+  tag: latest
+  pullPolicy: Always
 service:
-  name: sample-activiti-rb-app
   type: ClusterIP
   externalPort: 80
   internalPort: 8080
+  name: demo-rb
   annotations:
     fabric8.io/expose: "false"
 resources:
@@ -98,25 +99,19 @@ ingress:
   ## Set to true to enable ingress record generation
   enabled: false
 
-  path: /rb-my-app
+  path: /rb
 
   ## Set this to override global.gateway.host name
   hostName: 
 
   ## Set this to true in order to enable TLS on the ingress record
-  tls: false
+  tls: 
 
   ## If TLS is set to true, you must declare what secret will store the key/certificate for TLS
-  tlsSecret: myTlsSecret 
+  tlsSecret: 
 
   ## Ingress annotations done as key:value pairs
   annotations: {}
-
-#only needed when using sck8s
-rbac:
-  create: true
-serviceAccount:
-  create: true
 
 ## Add additional volumes and mounts
 extraVolumes: |
